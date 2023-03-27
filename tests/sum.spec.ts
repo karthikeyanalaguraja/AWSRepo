@@ -12,7 +12,7 @@ describe('AWS Connection Test', () => {
         const awsConnection = new AwsConnection();
         await awsConnection.getListOfAPIFromApiGateway();
         await awsConnection.getCustomDomainName();
-        const customDomainName = await awsConnection.getSpecficCustomDomainName("qa-notification","api.notification.qa.hyatt.global");
+        const customDomainName = await awsConnection.getSpecficCustomDomainName("qa-notification","xxxxxxxxxxx");
         console.log(customDomainName);
         const data = await awsConnection.getCloudWatch("/aws/api-gateway/notification-qa");
         console.log(data)
@@ -55,14 +55,14 @@ describe('AWS Connection Test', () => {
     })
 
     it.skip('Generate Auth Token', async () => {
-               var url = 'https://hyatt-non-prod-int.apigee.net/oauth-compliant/client_credential/accesstoken?grant_type=client_credentials' 
+               var url = 'https://hxxxxxxxxxxxxoauth-compliant/client_credential/accesstoken?grant_type=client_credentials' 
           
             var postOptions = {
               'method': 'POST',
               'headers': {
                 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
                 'grant_type':'client_credentials',
-                'Authorization' : 'client_id:tOAIAfUBNl1agVv0XGhGmWt7YoFEXC5g, client_secret:Vsm5mJSAKg57mSl3'
+                'Authorization' : 'client_id:xxxxxxx, client_secret:xxxxxxx'
               },
               'redirect': 'follow'
             };

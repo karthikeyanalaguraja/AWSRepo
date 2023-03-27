@@ -61,7 +61,7 @@ export class ApiBase {
     }
 
     async generateAccessToken (client_id, client_secret) {
-        const accessTokenUrl = 'https://hyatt-non-prod-int.apigee.net/oauth-compliant/client_credential/accesstoken?grant_type=client_credentials';
+        const accessTokenUrl = 'https://xxxxxxxxxxxxx/oauth-compliant/client_credential/accesstoken?grant_type=client_credentials';
         const clientId = client_id;
         const clientSecret = client_secret;
 

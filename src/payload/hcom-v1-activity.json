@@ -1,0 +1,15 @@
+{
+  "guest": {
+    "memberId": "{{memberId}}", 
+    "adobeId": "{{adobeId}}"
+  },
+  "session": {
+    "userAgent": "{{userAgent}}",
+    "version": "{{version}}"
+  },
+  "channel": "{{channel}}",
+  "hpesrId": "{{hpesrId}}",
+  "eventType": "{{eventType}}",
+  "pageId": "{{pageId}}",
+  "lang": "{{lang}}"
+}

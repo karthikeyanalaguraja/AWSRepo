@@ -133,11 +133,11 @@ describe('Hcom Smoke Test', () => {
   })
 
   it('Properties Sort with Valid Payload', async () => {
-    todo: test is going to similar like the above but the payload is not the interface its a json file "PropertiesSortPayload.json"
-    todo: in that i have to replace that variables with data and remaining data retains and pass this as payload
-    todo : Once the test is pass, this time i want the response to be validated. My guess it capture the response into a interface modal and 
-    validate the data against some hard coded value, later i will connect to db to validate. The sample response is stored in sampleresponse.ts
-    todo : use or extend the cloud watch logs and validate these logs are present in there 
+//     todo: test is going to similar like the above but the payload is not the interface its a json file "PropertiesSortPayload.json"
+//     todo: in that i have to replace that variables with data and remaining data retains and pass this as payload
+//     todo : Once the test is pass, this time i want the response to be validated. My guess it capture the response into a interface modal and 
+//     validate the data against some hard coded value, later i will connect to db to validate. The sample response is stored in sampleresponse.ts
+//     todo : use or extend the cloud watch logs and validate these logs are present in there 
   })
 
 })

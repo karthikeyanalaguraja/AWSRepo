@@ -1,43 +1,62 @@
-import {ActivityTrackerPayload} from '../hcomPayload/ActivityTrackerPayload'
 import axios from 'axios'
 import { AuthToken } from '../../../utility/AuthToken'
 import { ApiBase } from '../../../utility/ApiBase'
 
 export class ActivityTracker extends ApiBase {
+  async postActivityTracker(requestBodyData: any) {
+    const authToken = new AuthToken()
+    const [client_id, client_secret] = await authToken.secretManager()
+    const token = await this.generateAccessToken(client_id, client_secret)
 
-    async postActivityTracker() {
-        const authToken = new AuthToken()
-        const [client_id, client_secret] = await authToken.secretManager()
-        const token = await this.generateAccessToken(client_id, client_secret)
-        console.log(token)
+    const requestBody = requestBodyData
 
-        const requestBody: ActivityTrackerPayload = {
-            guest: {
-              memberId: 'aliqua-in-sint',
-              adobeId: 'labore-adipisicing-officia-amet-cupidatat',
-            },
-            session: {
-              userAgent: 'iOS',
-              version: 'v0.1',
-            },
-            channel: 'web',
-            hpesrId: 'tempor-dolor-cillum-sint',
-            eventType: 'view',
-            pageId: 'commodo',
-            lang: 'es-ES',
-          }
-
-          const headers = {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          }
-      
-          const response = await axios.post('https://hyatt-non-prod-int.apigee.net/hpe/v1/activity', requestBody, { headers })
-      
-          console.log(response.status)
-      
-          if (response.status < 200 || response.status >= 300) {
-            throw new Error(`Unexpected status code: ${response.status}`)
-          }
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     }
+
+    const response = await axios.post('https://hyatt-non-prod-int.apigee.net/hpe/v1/activity', requestBody, { headers })
+
+    return response
+  }
+
+  async postProperty(requestBodyData: any) {
+    const authToken = new AuthToken()
+    const [client_id, client_secret] = await authToken.secretManager()
+    const token = await this.generateAccessToken(client_id, client_secret)
+
+    const requestBody = requestBodyData
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'x-app-client':'CORTEX',
+      'x-hyatt-locale':'en-US',
+      'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:108.0) Gecko/20100101 Firefox/108.0',
+      'Content-Type': 'application/json',
+    }
+
+    const response = await axios.post('https://hyatt-non-prod-int.apigee.net/hpe/v1/properties', requestBody, { headers })
+
+    return response
+  }
+
+  async postPropertiesSort(requestBodyData: any) {
+    const authToken = new AuthToken()
+    const [client_id, client_secret] = await authToken.secretManager()
+    const token = await this.generateAccessToken(client_id, client_secret)
+
+    const requestBody = requestBodyData
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'x-app-client':'CORTEX',
+      'x-hyatt-locale':'en-US',
+      'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:108.0) Gecko/20100101 Firefox/108.0',
+      'Content-Type': 'application/json',
+    }
+
+    const response = await axios.post('https://hyatt-non-prod-int.apigee.net/hpe/v1/properties', requestBody, { headers })
+
+    return response
+  }
 }

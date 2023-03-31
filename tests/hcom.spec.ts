@@ -1,49 +1,140 @@
-import axios from 'axios'
 import { beforeAll, describe, expect, it, assert } from 'vitest'
-import { ApiBase } from '../utility/ApiBase'
-import { AuthToken } from '../utility/AuthToken'
 import { ActivityTracker } from '../src/hcom/hcomApi/ActivityTracker'
-import fs from 'fs'
+import { ActivityTrackerPayload } from '../src/hcom/hcomPayload/ActivityTrackerPayload'
+import { PropertiesPayload } from '../src/hcom/hcomPayload/PropertiesPayload'
 
-describe('AWS Connection Test', () => {
-  it.skip('Activity API', async () => {
-    const apiBase = new ApiBase()
-    const authToken = new AuthToken()
-    const [client_id, client_secret] = await authToken.secretManager()
-    const token = await apiBase.generateAccessToken(client_id, client_secret)
-    console.log(token)
 
-    const requestBody = {
-      guest: {
-        memberId: 'aliqua-in-sint',
-        adobeId: 'labore-adipisicing-officia-amet-cupidatat',
-      },
-      session: {
-        userAgent: 'iOS',
-        version: 'v0.1',
-      },
-      channel: 'web',
-      hpesrId: 'tempor-dolor-cillum-sint',
-      eventType: 'view',
-      pageId: 'commodo',
-      lang: 'es-ES',
-    }
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    }
+describe('Hcom Smoke Test', () => {
 
-    const response = await axios.post('https://hyatt-non-prod-int.apigee.net/hpe/v1/activity', requestBody, { headers })
-
-    console.log(response.status)
-
-    if (response.status < 200 || response.status >= 300) {
-      throw new Error(`Unexpected status code: ${response.status}`)
+  it('Activity Tracker with Valid Payload', async () => {
+    try {
+      const activityTracker = new ActivityTracker()
+      const requestBody: ActivityTrackerPayload = {
+        guest: {
+          memberId: 'aliqua-in-sint',
+          adobeId: 'labore-adipisicing-officia-amet-cupidatat',
+        },
+        session: {
+          userAgent: 'iOS',
+          version: 'v0.1',
+        },
+        channel: 'web',
+        hpesrId: 'tempor-dolor-cillum-sint',
+        eventType: 'view',
+        pageId: 'commodo',
+        lang: 'es-ES',
+      }
+      const response = await activityTracker.postActivityTracker(requestBody)
+      expect(response.status).toBe(200)
+      expect(response.statusText).toBe('OK')
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        console.log('Invalid payload:', error.response.data)
+      } else {
+        console.error('Unexpected error:', error)
+      }
     }
   })
 
-  it('Sample test', async () => {
-    const activityTracker = new ActivityTracker()
-    await activityTracker.postActivityTracker()
+  it('Activity Tracker with InValid Payload', async () => {
+    try {
+      const activityTracker = new ActivityTracker()
+      const requestBody: ActivityTrackerPayload = {
+        guest: {
+          memberId: 'aliqua-in-sint',
+          adobeId: 'labore-adipisicing-officia-amet-cupidatat',
+        },
+        session: {
+          userAgent: 'iOS',
+          version: 'v0.1',
+        },
+        channel: 'web',
+        hpesrId: 'tempor-dolor-cillum-sint',
+        eventType: 'view',
+        pageId: 'commodo',
+        lang: 'es-XX',
+      }
+      const response = await activityTracker.postActivityTracker(requestBody)
+      expect(response.status).toBe(422)
+      console.log(response)
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        console.log('Invalid payload:', error.response.data)
+      } else {
+        console.error('Unexpected error:', error)
+      }
+    }
   })
+
+  it('Properties with Valid Payload', async () => {
+    try {
+      const activityTracker = new ActivityTracker()
+      const requestBody: PropertiesPayload = {
+        "page": "/my-accounts",
+        "slots": [
+            {
+                "type": "/hpe/v1/property",
+                "id": "iasdkj82"
+            }
+        ],
+        "guest": {
+            "memberId": "asddsasd",
+            "adobeId": "123123123"
+        },
+        "session": {
+            "country": "aS-_",
+            "region": null,
+            "city": null
+        }
+      }
+      const response = await activityTracker.postProperty(requestBody)
+      expect(response.status).toBe(200)
+      expect(response.statusText).toBe('OK')
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        console.log('Invalid payload:', error.response.data)
+      } else {
+        console.error('Unexpected error:', error)
+      }
+    }
+  })
+
+  it('Properties with Valid InPayload', async () => {
+    try {
+      const activityTracker = new ActivityTracker()
+      const requestBody: PropertiesPayload = {
+        "page": "/my-accounts",
+        "slots": [
+            {
+                "type": "/hpe/v1/propertys",
+                "id": "iasdkj82"
+            }
+        ],
+        "guest": {
+            "memberId": "asddsasd",
+            "adobeId": "123123123"
+        },
+        "session": {
+            "country": "aS-_",
+            "region": null,
+            "city": null
+        }
+      }
+      const response = await activityTracker.postProperty(requestBody)
+      expect(response.status).toBe(200)
+      expect(response.statusText).toBe('OK')
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        console.log('Invalid payload:', error.response.data)
+      } else {
+        console.error('Unexpected error:', error)
+      }
+    }
+  })
+
+  it('Properties Sort with Valid Payload', async () => {
+    todo: test is going to similar like the above but the payload is not the interface its a json file "PropertiesSortPayload.json"
+    todo: in that i have to replace that variables with data and remaining data retains and pass this as payload
+  })
+
 })

@@ -1,0 +1,128 @@
+{
+    "id": "95c58636-c991-4c17-ade8-a6756776530b",
+    "code": "ok",
+    "statusCode": 200,
+    "message": "ok",
+    "hotelSummaries": [
+        {
+            "hotelDetail": {
+                "sourceInfo": "svc-atlas",
+                "spiritCode": "bosct",
+                "name": "Hyatt Centric Faneuil Hall Boston",
+                "brand": "centric",
+                "thumbnails": {
+                    "widescreen": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2019/04/16/1204/Hyatt-Centric-Faneuil-Hall-Boston-P013-Deluxe-King-View.jpg/Hyatt-Centric-Faneuil-Hall-Boston-P013-Deluxe-King-View.16x9.jpg",
+                    "standard": "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2019/04/16/1204/Hyatt-Centric-Faneuil-Hall-Boston-P013-Deluxe-King-View.jpg/Hyatt-Centric-Faneuil-Hall-Boston-P013-Deluxe-King-View.4x3.jpg"
+                },
+                "address1": "54-68 Devonshire Street",
+                "address2": null,
+                "phone": "+1 617 720 1234",
+                "city": "Boston",
+                "province": "Massachusetts",
+                "zipcode": "02109",
+                "country": "United States",
+                "countryCode": "US",
+                "description": "Walking distance from the Old State House, Faneuil Hall, and Boston City Hall.",
+                "specialNote": "DESTINATION FEE: A destination fee of $25.00 plus tax (subject to change) is applied to each night of your stay in order to provide services and amenities which enhance the guest experience. Please contact the hotel directly for more information. <a href=\"https://www.hyatt.com/en-US/hotel/massachusetts/hyatt-centric-faneuil-hall-boston/bosct/policies/#fee\" target=\"_blank\">Click here to view all inclusions</a> PLEASE NOTE: One of our highest priorities for welcoming guests and colleagues is doing it with your safety and wellbeing in mind. For specific travel requirements, see Hyatt?s Global Care &amp; Cleanliness Commitment <a href=\"https://www.hyatt.com/info/care-and-cleanliness-americas\" target=\"_blank\">here</a>. For other inquiries, please call the hotel directly. For other inquiries, please contact the hotel directly. LIMITED SERVICES - Housekeeping (every 3rd day, unless requested).",
+                "latitude": "42.358083",
+                "longitude": "-71.057146",
+                "propertySiteURL": null,
+                "fullPropertySiteURL": "https://go.dev.hyatt.global/link/v2/kyOcuAG0ulBBY6JXoCbR4Ydaxh8TejzE",
+                "externalBookingURL": null,
+                "additionalPiiPolicy": false,
+                "scaEnabled": false,
+                "alternatePropertySiteURL": null,
+                "gpCategory": "5",
+                "showBrandLogo": true,
+                "propertyType": "HYATT",
+                "hotelStatus": "FULLY_BOOKABLE",
+                "bookableDate": "2019-02-21",
+                "openDate": "2019-02-25",
+                "lastRenovationDate": null,
+                "decommissionDate": null,
+                "checkinTime": "04:00 PM",
+                "checkoutTime": "11:00 AM",
+                "region": "North America",
+                "timezone": "America/New_York",
+                "hotelRating": {
+                    "rating": 4,
+                    "numReviews": 437,
+                    "verifiedRating": 4,
+                    "verifiedNumReviews": 246
+                },
+                "hotelAmenities": [
+                    {
+                        "key": "BUSINESS_SERVICES",
+                        "name": "Business Services",
+                        "enabled": true,
+                        "featured": false,
+                        "openingDate": null,
+                        "closingDate": null,
+                        "status": "OPENED",
+                        "note": null
+                    }
+                ],
+                "capabilities": {
+                    "keylessEntry": true,
+                    "onlineCheckin": true
+                },
+                "characteristics": [
+                    {
+                        "key": "NEAR_SHOPPING",
+                        "label": "Near Shopping"
+                    }
+                ],
+                "availableSpecialRequests": [
+                    "ROLLAWAY",
+                    "CRIB",
+                    "LATE_CHECKIN",
+                    "CONNECTING_ROOMS",
+                    "SYNTH_BEDDING",
+                    "QUIET_ROOM",
+                    "NON_SMOKING_ROOM",
+                    "SMS_OPTIN",
+                    "NEAR_ELEVATOR",
+                    "SIGHT_DEVICES",
+                    "HEARING_DEVICES",
+                    "EARLY_CHECKIN"
+                ],
+                "availableAwardTypes": [
+                    "FREENIGHTSTANDARD",
+                    "POINTSCASH"
+                ]
+            },
+            "leadingRate": {
+                "spiritCode": "bosct",
+                "status": "BOOKABLE",
+                "rate": 193.26,
+                "rateAfterTax": 254.19,
+                "points": 17000,
+                "currencyCode": "USD",
+                "ratePlanCode": "MYHI15",
+                "roomTypeCode": "KING",
+                "rateFlags": [
+                    "LTO_MEMBER_SAVE",
+                    "MEMBER_DISCOUNT"
+                ],
+                "taxes": [
+                    {
+                        "taxCode": "OT",
+                        "taxDescription": "OCCUPANCY TAX",
+                        "taxAmount": 12.56,
+                        "taxPercentage": 6.5
+                    },
+                    {
+                        "taxCode": "ST",
+                        "taxDescription": "STATE TAX",
+                        "taxAmount": 11.02,
+                        "taxPercentage": 5.7
+                    }
+                ]
+            },
+            "bookabilityStatus": "BOOKABLE",
+            "distance": 0.16408720952799064,
+            "hpesrId": "kyOcuAG0ulBBY6JXoCbR4Ydaxh8TejzE",
+            "recommendedOrder": 0
+        }
+    ]
+}

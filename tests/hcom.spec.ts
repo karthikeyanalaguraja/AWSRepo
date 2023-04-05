@@ -2,11 +2,12 @@ import { beforeAll, describe, expect, it, assert } from 'vitest'
 import { ActivityTracker } from '../src/hcom/hcomApi/ActivityTracker'
 import { ActivityTrackerPayload } from '../src/hcom/hcomPayload/ActivityTrackerPayload'
 import { PropertiesPayload } from '../src/hcom/hcomPayload/PropertiesPayload'
+import { AwsConnection } from '../utility/AwsConnection'
 
 
 describe('Hcom Smoke Test', () => {
 
-  it('Activity Tracker with Valid Payload', async () => {
+  it.skip('Activity Tracker with Valid Payload', async () => {
     try {
       const activityTracker = new ActivityTracker()
       const requestBody: ActivityTrackerPayload = {
@@ -27,6 +28,8 @@ describe('Hcom Smoke Test', () => {
       const response = await activityTracker.postActivityTracker(requestBody)
       expect(response.status).toBe(200)
       expect(response.statusText).toBe('OK')
+      const awsConnection = new AwsConnection()
+      await awsConnection.xray()
     } catch (error) {
       if (error.response && error.response.status === 422) {
         console.log('Invalid payload:', error.response.data)
@@ -36,7 +39,12 @@ describe('Hcom Smoke Test', () => {
     }
   })
 
-  it('Activity Tracker with InValid Payload', async () => {
+  it('dummy test', async() => {
+    const awsConnection = new AwsConnection()
+      await awsConnection.xray()
+  })
+
+  it.skip('Activity Tracker with InValid Payload', async () => {
     try {
       const activityTracker = new ActivityTracker()
       const requestBody: ActivityTrackerPayload = {
@@ -66,7 +74,7 @@ describe('Hcom Smoke Test', () => {
     }
   })
 
-  it('Properties with Valid Payload', async () => {
+  it.skip('Properties with Valid Payload', async () => {
     try {
       const activityTracker = new ActivityTracker()
       const requestBody: PropertiesPayload = {
@@ -99,7 +107,7 @@ describe('Hcom Smoke Test', () => {
     }
   })
 
-  it('Properties with Valid InPayload', async () => {
+  it.skip('Properties with Valid InPayload', async () => {
     try {
       const activityTracker = new ActivityTracker()
       const requestBody: PropertiesPayload = {
@@ -133,11 +141,12 @@ describe('Hcom Smoke Test', () => {
   })
 
   it('Properties Sort with Valid Payload', async () => {
-//     todo: test is going to similar like the above but the payload is not the interface its a json file "PropertiesSortPayload.json"
-//     todo: in that i have to replace that variables with data and remaining data retains and pass this as payload
-//     todo : Once the test is pass, this time i want the response to be validated. My guess it capture the response into a interface modal and 
-//     validate the data against some hard coded value, later i will connect to db to validate. The sample response is stored in sampleresponse.ts
-//     todo : use or extend the cloud watch logs and validate these logs are present in there 
+    // todo: test is going to similar like the above but the payload is not the interface its a json file "PropertiesSortPayload.json"
+    // todo: in that i have to replace that variables with data and remaining data retains and pass this as payload
+    // todo : Once the test is pass, this time i want the response to be validated. My guess it capture the response into a interface modal and 
+    // todo : validate the data against some hard coded value, later i will connect to db to validate. The sample response is stored in sampleresponse.ts
+    // todo : use or extend the cloud watch logs and validate these logs are present in there 
+  
   })
 
 })

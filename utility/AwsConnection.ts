@@ -1,8 +1,9 @@
 import { APIGatewayClient, GetDomainNameCommand } from '@aws-sdk/client-api-gateway'
 import { DynamoDBClient, QueryCommand, ScanCommand } from '@aws-sdk/client-dynamodb'
+import AWS from 'aws-sdk'
+import { XRay } from '@aws-sdk/client-xray';
 const dotenv = require('dotenv')
 dotenv.config()
-import AWS from 'aws-sdk'
 
 const credentials = new AWS.SharedIniFileCredentials({ profile: 'dev' })
 
@@ -124,6 +125,32 @@ export class AwsConnection {
       console.log(data.Items)
     } catch (err) {
       console.error('Unable to query. Error:', JSON.stringify(err, null, 2))
+    }
+  }
+
+  async xray() {
+    const xray = new XRay({ region: 'us-east-2' });
+    const endTime = new Date().getTime(); // Current time
+    const startTime = endTime - (5 * 60 * 1000); // 5 minutes ago
+    
+    const params = {
+      StartTime: new Date(startTime),
+      EndTime: new Date(endTime),
+    };
+
+    try {
+      const data = await xray.getTraceSummaries(params);
+      console.log(`Found ${data.TraceSummaries?.length ?? 0} traces:`);
+      console.log(data.TraceSummaries)
+      data.TraceSummaries?.forEach((trace) => {
+      console.log(`- Trace ID: ${trace.Id}, Http URL: ${trace.Http?.HttpURL}, Http Status: ${trace.Http?.HttpStatus},`);
+      const annotations = trace.Annotations;
+      const apiId = annotations['aws:api_id'];
+      console.log(apiId);
+    });
+
+   } catch (err) {
+          console.log('Error retrieving traces:', err);
     }
   }
 }

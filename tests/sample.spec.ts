@@ -65,4 +65,9 @@ describe.skip('AWS Connection Test', () => {
     }
     //    var authToken = UrlFetchApp.fetch(url, postOptions);
   })
+
+  it('XRAY Connection', async () => {
+    const awsConnection = new AwsConnection()
+    await awsConnection.xray()
+  })
 })
